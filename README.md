@@ -29,7 +29,7 @@ El patrón repositorio se utiliza para crear una capa de abstracción entre la a
 </p>
 
 <p align="center">
-  <img src="https://imgur.com/uZwHA7k.png" alt="img01">
+  <img src="https://i.ibb.co/3c5SyKm/rp01.png" alt="img01">
 </p>
 
 <p align="justify">
@@ -40,7 +40,7 @@ Este patrón nos brinda la posibilidad de cambiar la tecnología de almacenamien
 </p>
 
 <p align="center">
-  <img src="https://imgur.com/I9BnnJl.png" alt="img02">
+  <img src="https://i.ibb.co/dmXjmgb/rp02.png" alt="img02">
 </p>
 <br>
 
@@ -52,7 +52,7 @@ Para este caso modificamos la estructura del proyecto adaptándolo a nuestra ló
 En nuestro proyecto Dominio se encuentran las clases Camion, Conductor y Trabajo el cual representan las entidades de dominio en la aplicación.
 </p>
 <p align="center">
-  <img src="https://imgur.com/KaYYC7b.png" alt="img03">
+  <img src="https://i.ibb.co/WP8Z622/1.png" alt="img03">
 </p>
 <br>
 
@@ -63,7 +63,7 @@ En la carpeta <i>Repositorios</i> se encuentra un proyecto repositorio para cada
 La implementación de nuestros repositorios tendrá un repo para SQL Server, otro para MongoDB y otro para un Servicio WCF.
 </p>
 <p align="center">
-  <img src="https://imgur.com/4dUjPk2.png" alt="img04">
+  <img src="https://i.ibb.co/1R0xrG8/2.png" alt="img04">
 </p>
 <br>
 
@@ -74,7 +74,7 @@ El proyecto de <b>Contrato</b> contiene las interfaces para cada repositorio, qu
 El proyecto <b>SQLRepository</b> contiene una clase para representar el contexto de Entity Framework que interactúa con una base de datos SQL Server llamada TruckDriver, usando el enfoque de EF Code First. Adicionalmente tenemos una clase BaseRepository, la cual contiene todas las operaciones básicas que pueden aplicar para cualquier entidad que se tenga que interactuar con la base de datos. En el interior de la carpeta Conductor, la clase Conductor se encarga de mapear la tabla Conductor de la tabla Conductor de la base de datos y su configuración a través de “DataAnnotations” y ConductorRepository es el repositorio específico para realizar operaciones con la tabla Conductor que a su vez hereda de nuestro repositorio base para implementar las operaciones que este expone. En este caso usamos la biblioteca “AutoMapper” para mapear la entidad <i>Conductor</i> de CodeFirst a nuestra entidad de domino Conductor, que se encuentra en el proyecto de dominio, y es la entidad devuelta por el repositorio y usada por los clientes que consuman el repo, esto con el fin de que todos los clientes hablen en términos del domino y todo quede centralizado en estas entidades.
 </p>
 <p align="center">
-  <img src="https://imgur.com/L4BdNjJ.png" alt="img05">
+  <img src="https://i.ibb.co/QchbfF9/3.png" alt="img05">
 </p>
 <br>
 
@@ -82,7 +82,7 @@ El proyecto <b>SQLRepository</b> contiene una clase para representar el contexto
 En el proyecto <b>MongoRepository</b> utilizamos la entidad <i>Trabajo</i> y también tenemos un repositorio base que nos permite conectarnos a una base de datos MongoDB y realizar operaciones sobre esa colección. En el interior de la carpeta Trabajo encontramos una clase Trabajo que representa la tabla en la base de datos y que a su vez será mapeado por Automapper a nuestra entidad de dominio Trabajo. Finalmente, el repositorio especifico TrabajoRepository realizara las operaciones que heredan del repo base.
 </p>
 <p align="center">
-  <img src="https://imgur.com/msqZ2Sv.png" alt="img06">
+  <img src="https://i.ibb.co/PggpVsb/4.png" alt="img06">
 </p>
 <br>
 
@@ -90,7 +90,7 @@ En el proyecto <b>MongoRepository</b> utilizamos la entidad <i>Trabajo</i> y tam
 Y la última implementación de los repositorios, el proyecto <b>ServicioRepository</b> que manejara la entidad <i>Camion</i>. En este caso usaremos directamente la entidad de dominio Camion, por lo que no necesitaremos del uso de AutoMapper, tendremos un repositorio base el cual se encarga de consumir el servicio WCF. Dentro de la solución se implementó una carpeta <i>Servicios Externos</i> para la creación del servicio WCF el cual realiza operaciones mediante ADO.NET conectado a otra base de datos SQL Server llamada Truck, este contiene una tabla Camion para guardar los datos del dominio Camion. En el interior de la carpeta Camion se encuentra nuestro repo especifico CamionRepository que a su vez hereda del repo base para realizar las operaciones sobre la entidad domino Camion. 
 </p>
 <p align="center">
-  <img src="https://imgur.com/Rlpn3w6.png" alt="img07">
+  <img src="https://i.ibb.co/HXzFxdH/5.png" alt="img07">
 </p>
 <br>
 
@@ -98,7 +98,7 @@ Y la última implementación de los repositorios, el proyecto <b>ServicioReposit
 Para consumir estos repositorios usaremos un ASP.NET WebForms como aplicación cliente. Dentro contiene un módulo <i>Mantenimiento</i> para administrar la página Conductor y Trabajo. Para poder comunicarnos con los repositorios debemos referenciar a nuestro proyecto, de esta forma obtenemos acceso a las diferentes fuentes de datos (SQL Server, MongoDB, Servicio WCF) y nuestra aplicación no sabrá de donde provienen los datos y por ende estará desacoplada del acceso a datos.
 </p>
 <p align="center">
-  <img src="https://imgur.com/TNtkgeP.png" alt="img08">
+  <img src="https://i.ibb.co/mv28C59/6.png" alt="img08">
 </p>
 <br>
 
